@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    function index($id){
-        $users = [  ['id'=>1,'name'=>"nour"],['id'=>2,'name'=>"omar"]];
-        // foreach($users as $user){
-        //     echo $user["id"];
-        // }
-        return response()->json(['messege'=>$id]);
+    public function getProfile($id){
+        return User::find($id)->profile;
+    }
+    public function getUserTasks($id){
+        return User::find($id)->tasks;
     }
 }

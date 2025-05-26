@@ -5,13 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Task extends Model
+class Profile extends Model
 {
     use HasFactory;
-    protected $fillable = ['title','description','priority','user_id'];
-    protected $table = "tasks";
-    protected $primaryKey = 'id';
+    protected $guarded = [];
+    protected $table = "profiles";
+
     public function user(){
         return $this->belongsTo(User::class);
     }
+
 }

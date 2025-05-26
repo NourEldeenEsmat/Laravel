@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WelcomeController;
@@ -27,3 +29,8 @@ Route::post('/tasks',[TaskController::class,'index']);
 Route::put('/update_task/{id}',[TaskController::class,'update']);
 Route::get('/show/{id}',[TaskController::class,'findById']);
 Route::delete('/delete_task/{id}',[TaskController::class,'destroy']);
+Route::apiResource('resource', RController::class);
+Route::post('profile',[ProfileController::class,'create']);
+// Route::get('profile/{id}',[ProfileController::class,'show']);
+Route::get('profile/{id}',action: [UserController::class,'getProfile']);
+Route::get('user/{id}/tasks',action: [UserController::class,'getUserTasks']);
